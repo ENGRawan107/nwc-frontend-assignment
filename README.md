@@ -1,5 +1,13 @@
 # NWC Frontend Application
 
+## Preview
+
+![Login](login.png)
+![Requests](requests.png)
+
+
+
+
 ## Overview
 This project is a simplified frontend application built using Angular, inspired by the NWC (National Water Company) e-Branch portal.
 
