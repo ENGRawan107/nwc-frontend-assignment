@@ -1,0 +1,47 @@
+<div class="dashboard-layout">
+
+  <aside class="sidebar">
+    <h3>Menu</h3>
+    <div class="menu-item" routerLink="/dashboard">Dashboard</div>
+    <div class="menu-item" routerLink="/bills">Bills</div>
+  </aside>
+
+  <main class="main-content">
+    <h2>Requests</h2>
+
+    <button (click)="showForm = true" class="add-btn">
+      + Add Request
+    </button>
+
+    <!--  الفورم -->
+    <div *ngIf="showForm" class="form-box">
+
+      <h3>New Request</h3>
+
+      <input 
+        type="text" 
+        placeholder="Request Type" 
+        [(ngModel)]="newRequest.type"
+      >
+
+      <textarea 
+        placeholder="Description" 
+        [(ngModel)]="newRequest.description"
+      ></textarea>
+
+      <button (click)="addRequest()">
+        Submit
+      </button>
+
+    </div>
+
+    <!-- القائمه -->
+    <div class="request-list">
+      <div class="request-item" *ngFor="let req of requests">
+        {{ req.type }} - {{ req.status }}
+      </div>
+    </div>
+
+  </main>
+
+</div>

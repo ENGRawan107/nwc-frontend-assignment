@@ -1,0 +1,45 @@
+<div class="dashboard-layout">
+
+  <aside class="sidebar">
+    <h3>Menu</h3>
+    <div class="menu-item" routerLink="/dashboard">Dashboard</div>
+    <div class="menu-item">Requests</div>
+  </aside>
+
+  <main class="main-content">
+    <h2>Bills</h2>
+
+    <!-- Search -->
+    <input type="text" [(ngModel)]="search" placeholder="Search..." class="search">
+
+    <!-- Bills List -->
+    <div class="bill-list">
+
+      <div class="bill-item"
+           *ngFor="let bill of bills"
+           (click)="showDetails(bill)"
+           [hidden]="
+             search &&
+             !bill.id.includes(search) &&
+             !bill.status.toLowerCase().includes(search.toLowerCase())
+           ">
+
+        Bill {{ bill.id }} - {{ bill.amount }} SAR - {{ bill.status }}
+
+      </div>
+
+    </div>
+
+    <!-- Details -->
+    <div class="bill-details" *ngIf="selectedBill">
+      <h3>Bill Details</h3>
+      <p><strong>Bill ID:</strong> {{ selectedBill.id }}</p>
+      <p><strong>Amount:</strong> {{ selectedBill.amount }} SAR</p>
+      <p><strong>Status:</strong> {{ selectedBill.status }}</p>
+      <p><strong>Meter Number:</strong> {{ selectedBill.meter }}</p>
+      <p><strong>Due Date:</strong> {{ selectedBill.dueDate }}</p>
+    </div>
+
+  </main>
+
+</div>
