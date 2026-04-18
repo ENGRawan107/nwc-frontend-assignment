@@ -18,11 +18,10 @@
       <div class="bill-item"
            *ngFor="let bill of bills"
            (click)="showDetails(bill)"
+
            [hidden]="
-             search &&
-             !bill.id.includes(search) &&
-             !bill.status.toLowerCase().includes(search.toLowerCase())
-           ">
+           search && !bill.id.includes(search)
+           " >
 
         Bill {{ bill.id }} - {{ bill.amount }} SAR - {{ bill.status }}
 
